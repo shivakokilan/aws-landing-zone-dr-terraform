@@ -1,5 +1,5 @@
 # AWS Enterprise Landing Zone Governance & Multi-Region DR (Terraform)
-
+[![Terraform CI Validation](https://github.com/shivakokilan/aws-landing-zone-dr-terraform/actions/workflows/terraform-validate.yml/badge.svg)](https://github.com/shivakokilan/aws-landing-zone-dr-terraform/actions/workflows/terraform-validate.yml)
 Production-ready Infrastructure as Code (IaC) template implementing multi-account **AWS Control Tower & Organizations governance guardrails**, centralized **AWS CloudTrail & Config compliance auditing**, and **Cross-Region Disaster Recovery (S3 CRR + AWS Backup)** between UAE (`me-central-1`) and Mumbai (`ap-south-1`).
 
 ## Governance & Cross-Region DR Architecture
