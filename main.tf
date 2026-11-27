@@ -45,10 +45,10 @@ resource "aws_organizations_policy" "guardrail_deny_unencrypted_s3" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "DenyIncorrectEncryptionHeader"
-        Effect    = "Deny"
-        Action    = "s3:PutObject"
-        Resource  = "*"
+        Sid      = "DenyIncorrectEncryptionHeader"
+        Effect   = "Deny"
+        Action   = "s3:PutObject"
+        Resource = "*"
         Condition = {
           StringNotEquals = {
             "s3:x-amz-server-side-encryption" = ["aws:kms", "AES256"]
@@ -118,6 +118,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "dr_finops_tiering" {
     id     = "dr-glacier-cost-optimization"
     status = "Enabled"
 
+    filter {}
+
     transition {
       days          = var.dr_glacier_transition_days
       storage_class = "GLACIER_IR"
@@ -149,6 +151,8 @@ resource "aws_s3_bucket_replication_configuration" "cross_region_dr" {
   rule {
     id     = "replicate-erp-backups-to-mumbai"
     status = "Enabled"
+
+    filter {}
 
     source_selection_criteria {
       sse_kms_encrypted_objects {
